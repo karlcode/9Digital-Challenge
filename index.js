@@ -19,6 +19,11 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.post('/', function(request, response) {
+  console.log("asdas")
+  console.log(request);
+});
+
 app.get('/cool', function(request, response) {
   response.send(cool());
 });
