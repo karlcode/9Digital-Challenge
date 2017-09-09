@@ -14,7 +14,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  console.log(request.body)
+  console.log("asdas")
+  console.log(request)
   response.render('pages/index');
 });
 
