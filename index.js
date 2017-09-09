@@ -14,15 +14,14 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  console.log("asdas")
-  console.log(request)
   response.render('pages/index');
 });
 
 app.post('/', function(request, response) {
-  console.log("asdas")
-  console.log(request);
+  console.log(request)
+
 });
+
 
 app.get('/cool', function(request, response) {
   response.send(cool());
