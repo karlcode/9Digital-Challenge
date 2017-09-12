@@ -6,17 +6,21 @@
 
 <body>
 
-<% include ../partials/nav.ejs %>
 
 <div class="container">
 <h2>Database Results</h2>
 
 <ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
+    <% if(response!=null){ %>    
+    <% response.forEach(function(r) { %>
+        <li><%= r.slug %> - <%= r %></li>
     <% }); %>
+    <%}%> 
+    
+        
+    
 </ul>
-
+    <div> Data Entered as <%= userValue %> </div>
 </div>
 
 </body>
