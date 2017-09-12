@@ -2,16 +2,10 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
 
-
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(function(req,res,next){
-  res.locals.response = null;
-  res.locals.userValue = null;
-  next();
-})
 app.use(function(err, req, res, next) {
   if (err.status === 400) {
     res.status(400).json({
@@ -22,15 +16,11 @@ app.use(function(err, req, res, next) {
   }
 });
 
-
-// views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){ 
-  res.render('pages/db', {
-    userValue: "yolo"
-  });
+  res.render('pages/index');
 });
 
 app.post('/', function(req, res) {
@@ -47,11 +37,7 @@ app.post('/', function(req, res) {
           })
         }
       }
-      
-      res.render('pages/db', { userValue: 'Tobi' }, function(err, html){
-        res.send(html) 
-      })
-      
+      res.send(responseArray) 
   }
   else {
     res.json({
@@ -59,7 +45,6 @@ app.post('/', function(req, res) {
     })
   }
 });
-
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
